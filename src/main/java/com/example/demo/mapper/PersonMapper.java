@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import java.io.IOException;
+
 /**
  * @author Evandro Carvalho on jan, 2020
  */
@@ -21,7 +23,7 @@ public class PersonMapper {
 
     private Person person;
 
-    public Person from(String message) throws JsonProcessingException, IllegalArgumentException {
+    public Person from(String message) throws IOException, IllegalArgumentException {
         person = mapper.readValue(message, Person.class);
         validation.validate(person);
 

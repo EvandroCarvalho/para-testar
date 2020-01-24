@@ -19,6 +19,6 @@ public interface SavePersonFacade {
 
     PersonDto buildPersonDto(Person person, CepResponse cepResponse);
 
-    void savePersonDtop(PersonDto person);
+    void savePersonDto(PersonDto person);
 
 }

@@ -12,6 +12,8 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
 
+import java.io.IOException;
+
 /**
  * @author Evandro Carvalho on jan, 2020
  */
@@ -32,7 +34,7 @@ public class ValidAddressPersonListener {
              person = personMapper.from(message);
             savePersonFacade.save(person);
 
-        } catch (JsonProcessingException | IllegalArgumentException e) {
+        } catch (IOException | IllegalArgumentException e) {
             log.info(String.valueOf(e));
             producer.sendToPersonPoisonQueue(e.getMessage(), person);
 

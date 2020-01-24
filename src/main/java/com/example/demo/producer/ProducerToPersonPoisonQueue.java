@@ -5,6 +5,8 @@ import com.example.demo.model.Person;
 import com.example.demo.util.ConvertToJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
@@ -16,11 +18,12 @@ import org.springframework.stereotype.Service;
  * @author Evandro Carvalho on jan, 2020
  */
 @Slf4j
-@RequiredArgsConstructor
 @Component
+@AllArgsConstructor
+@NoArgsConstructor
 public class ProducerToPersonPoisonQueue {
 
-    private final JmsTemplate jmsTemplate;
+    private JmsTemplate jmsTemplate;
 
     public void sendToPersonPoisonQueue(final String errorDescription, final Person person) {
         final PersonToTreatModel personToTreatModel = createPersonToTreatModel(errorDescription, person);

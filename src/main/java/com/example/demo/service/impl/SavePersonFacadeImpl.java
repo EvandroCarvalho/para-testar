@@ -30,11 +30,11 @@ public class SavePersonFacadeImpl implements SavePersonFacade {
 
         CepResponse cepResponse = consultCepAddress(person.getCep());
 
-        PersonDto personDto = buildPersonDto(person, cepResponse);
+    PersonDto personDto = buildPersonDto(person, cepResponse);
 
-        savePersonDtop(personDto);
+    savePersonDto(personDto);
 
-    }
+}
 
     @Override
     public void validateCpf(String cpf) {
@@ -55,7 +55,7 @@ public class SavePersonFacadeImpl implements SavePersonFacade {
     }
 
     @Override
-    public void savePersonDtop(PersonDto person) {
+    public void savePersonDto(PersonDto person) {
         repository.save(person);
     }
 
